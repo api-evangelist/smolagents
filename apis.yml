@@ -81,6 +81,12 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/smolagents/refs/heads/main/rate-limits/smolagents-rate-limits.yml
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/smolagents/refs/heads/main/finops/smolagents-finops.yml
+  - type: BlogRSS
+    url: https://huggingface.co/blog/feed.xml
+  - type: Blogs
+    url: https://raw.githubusercontent.com/api-evangelist/smolagents/refs/heads/main/blogs/blogs.json
+  - type: JSONLDContext
+    url: https://raw.githubusercontent.com/api-evangelist/smolagents/refs/heads/main/json-ld/smolagents-context.jsonld
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,14 @@
+{
+  "name": "smolagents Blogs",
+  "description": "Blog posts related to smolagents from the Hugging Face blog.",
+  "url": "https://huggingface.co/blog/smolagents",
+  "rss": "https://huggingface.co/blog/feed.xml",
+  "blogs": [
+    {
+      "title": "Introducing smolagents: simple agents that write actions in code",
+      "url": "https://huggingface.co/blog/smolagents",
+      "published": "2024-12-31",
+      "tags": ["smolagents", "agents", "python", "code-agents", "hugging-face"]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "smolagents": "https://huggingface.co/docs/smolagents/",
+    "SoftwareLibrary": "SoftwareSourceCode",
+    "CodeAgent": {
+      "@id": "smolagents:reference/agents#smolagents.CodeAgent",
+      "@type": "@id"
+    },
+    "ToolCallingAgent": {
+      "@id": "smolagents:reference/agents#smolagents.ToolCallingAgent",
+      "@type": "@id"
+    },
+    "InferenceClientModel": {
+      "@id": "smolagents:reference/models#smolagents.InferenceClientModel",
+      "@type": "@id"
+    },
+    "LiteLLMModel": {
+      "@id": "smolagents:reference/models#smolagents.LiteLLMModel",
+      "@type": "@id"
+    },
+    "TransformersModel": {
+      "@id": "smolagents:reference/models#smolagents.TransformersModel",
+      "@type": "@id"
+    },
+    "Tool": {
+      "@id": "smolagents:reference/tools#smolagents.Tool",
+      "@type": "@id"
+    },
+    "ToolCollection": {
+      "@id": "smolagents:reference/tools#smolagents.ToolCollection",
+      "@type": "@id"
+    },
+    "MultiStepAgent": {
+      "@id": "smolagents:reference/agents#smolagents.MultiStepAgent",
+      "@type": "@id"
+    },
+    "ManagedAgent": {
+      "@id": "smolagents:reference/agents#smolagents.ManagedAgent",
+      "@type": "@id"
+    },
+    "GradioUI": {
+      "@id": "smolagents:reference/agents#smolagents.GradioUI",
+      "@type": "@id"
+    },
+    "documentation": {
+      "@id": "schema:documentation",
+      "@type": "@id"
+    },
+    "repository": {
+      "@id": "schema:codeRepository",
+      "@type": "@id"
+    },
+    "license": {
+      "@id": "schema:license",
+      "@type": "@id"
+    },
+    "programmingLanguage": "schema:programmingLanguage",
+    "version": "schema:version"
+  },
+  "@type": "SoftwareLibrary",
+  "@id": "https://huggingface.co/docs/smolagents/en/index",
+  "name": "smolagents",
+  "description": "An open-source Python library by Hugging Face for building and running powerful AI agents with minimal code, supporting CodeAgent and ToolCallingAgent paradigms.",
+  "url": "https://huggingface.co/docs/smolagents/en/index",
+  "programmingLanguage": "Python",
+  "license": "https://github.com/huggingface/smolagents/blob/main/LICENSE",
+  "repository": "https://github.com/huggingface/smolagents",
+  "documentation": "https://huggingface.co/docs/smolagents/en/index",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hugging Face",
+    "url": "https://huggingface.co"
+  },
+  "keywords": [
+    "AI Agents",
+    "CodeAgent",
+    "ToolCallingAgent",
+    "Multi-Agent",
+    "Python",
+    "LLM",
+    "Hugging Face",
+    "Open Source",
+    "Machine Learning"
+  ],
+  "installUrl": "https://pypi.org/project/smolagents/",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Open source, free to use"
+  }
+}
