@@ -1,0 +1,161 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: smolagents
+providerId: smolagents
+name: smolagents Rate Limits
+description: >
+  smolagents itself is a client-side library with no server-enforced rate limits.
+  Rate limits apply when smolagents agents make calls to Hugging Face Hub APIs
+  and Inference Providers. The Hub enforces rate limits in fixed 5-minute windows
+  using the IETF draft RateLimit HTTP header fields specification. Limits vary by
+  account tier (Anonymous, Free, PRO, Team, Enterprise, Enterprise Plus).
+created: '2026-06-12'
+modified: '2026-06-12'
+headers:
+  retryAfter: true
+  retryAfterHeader: RateLimit
+  rateLimitHeader: RateLimit
+  rateLimitPolicyHeader: RateLimit-Policy
+  headerSpec: IETF draft-ietf-httpapi-ratelimit-headers (Version 9)
+  examples:
+    - header: RateLimit
+      value: '"api|pages|resolvers";r=[remaining];t=[seconds remaining until reset]'
+    - header: RateLimit-Policy
+      value: '"fixed window";"api|pages|resolvers";q=[total allowed];w=[window seconds]'
+responseCodes:
+  throttled: 429
+  throttledDescription: Too Many Requests — returned when any rate limit window is exceeded
+  success: 200
+timeWindows:
+  windowType: fixed
+  windowDuration: 300
+  windowUnit: seconds
+  windowDescription: All rate limits are calculated over rolling 5-minute fixed windows
+limits:
+  - scope: hub-api-anonymous
+    description: Hub API requests (model search, repo creation, user management) for unauthenticated/IP-based users
+    metric: requests
+    limit: 500
+    timeFrame: per-5-minutes
+    note: Subject to change based on platform health
+  - scope: hub-api-free
+    description: Hub API requests for authenticated free-tier users
+    metric: requests
+    limit: 1000
+    timeFrame: per-5-minutes
+    note: Subject to change based on platform health
+  - scope: hub-api-pro
+    description: Hub API requests for PRO users
+    metric: requests
+    limit: 2500
+    timeFrame: per-5-minutes
+  - scope: hub-api-team
+    description: Hub API requests per member for Team organizations (limits applied individually, not shared)
+    metric: requests
+    limit: 3000
+    timeFrame: per-5-minutes
+  - scope: hub-api-enterprise
+    description: Hub API requests per member for Enterprise organizations
+    metric: requests
+    limit: 6000
+    timeFrame: per-5-minutes
+  - scope: hub-api-enterprise-plus
+    description: Hub API requests per member for Enterprise Plus organizations
+    metric: requests
+    limit: 10000
+    timeFrame: per-5-minutes
+  - scope: hub-api-enterprise-plus-ip-ranges
+    description: Hub API requests per member for Enterprise Plus with defined Organization IP Ranges
+    metric: requests
+    limit: 100000
+    timeFrame: per-5-minutes
+  - scope: resolvers-anonymous
+    description: File download (resolve) requests for anonymous users
+    metric: requests
+    limit: 3000
+    timeFrame: per-5-minutes
+    note: Subject to change based on platform health
+  - scope: resolvers-free
+    description: File download (resolve) requests for authenticated free users
+    metric: requests
+    limit: 5000
+    timeFrame: per-5-minutes
+    note: Subject to change based on platform health
+  - scope: resolvers-pro
+    description: File download (resolve) requests for PRO users
+    metric: requests
+    limit: 12000
+    timeFrame: per-5-minutes
+  - scope: resolvers-team
+    description: File download (resolve) requests per member for Team organizations
+    metric: requests
+    limit: 20000
+    timeFrame: per-5-minutes
+  - scope: resolvers-enterprise
+    description: File download (resolve) requests per member for Enterprise organizations
+    metric: requests
+    limit: 50000
+    timeFrame: per-5-minutes
+  - scope: resolvers-enterprise-plus
+    description: File download (resolve) requests per member for Enterprise Plus organizations
+    metric: requests
+    limit: 100000
+    timeFrame: per-5-minutes
+  - scope: resolvers-enterprise-plus-ip-ranges
+    description: File download (resolve) requests per member for Enterprise Plus with IP Ranges
+    metric: requests
+    limit: 500000
+    timeFrame: per-5-minutes
+  - scope: pages-anonymous
+    description: Web page requests for anonymous users
+    metric: requests
+    limit: 100
+    timeFrame: per-5-minutes
+    note: Subject to change based on platform health
+  - scope: pages-free
+    description: Web page requests for authenticated free users
+    metric: requests
+    limit: 200
+    timeFrame: per-5-minutes
+    note: Subject to change based on platform health
+  - scope: pages-pro
+    description: Web page requests for PRO users
+    metric: requests
+    limit: 400
+    timeFrame: per-5-minutes
+  - scope: pages-team
+    description: Web page requests per member for Team organizations
+    metric: requests
+    limit: 400
+    timeFrame: per-5-minutes
+  - scope: pages-enterprise
+    description: Web page requests per member for Enterprise organizations
+    metric: requests
+    limit: 600
+    timeFrame: per-5-minutes
+  - scope: pages-enterprise-plus
+    description: Web page requests per member for Enterprise Plus organizations
+    metric: requests
+    limit: 1000
+    timeFrame: per-5-minutes
+  - scope: pages-enterprise-plus-ip-ranges
+    description: Web page requests per member for Enterprise Plus with IP Ranges
+    metric: requests
+    limit: 10000
+    timeFrame: per-5-minutes
+bestPractices:
+  - Always pass HF_TOKEN in requests to avoid hitting anonymous (lower) rate limits
+  - Use huggingface_hub library v1.2.0+ for automatic 429 retry handling with precise backoff
+  - Prefer Resolver endpoints over Hub API calls where possible as resolver limits are higher
+  - Spread out batch requests over longer periods to avoid bursting within 5-minute windows
+  - Upgrade to PRO, Team, or Enterprise for production workloads requiring higher limits
+retryHandling:
+  sdkAutoRetry: true
+  sdkVersion: huggingface_hub >= 1.2.0
+  retryStrategy: Parses RateLimit header to extract exact reset seconds, waits, then retries
+  scope: File downloads (Resolvers) and paginated Hub API calls
+references:
+  - url: https://huggingface.co/docs/hub/rate-limits
+    description: Official Hub Rate Limits documentation
+  - url: https://datatracker.ietf.org/doc/draft-ietf-httpapi-ratelimit-headers/
+    description: IETF draft RateLimit HTTP header fields specification (Version 9)

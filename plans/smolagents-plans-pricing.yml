@@ -1,0 +1,182 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: smolagents
+providerId: smolagents
+name: smolagents Plans and Pricing
+description: >
+  smolagents is a free open-source library (Apache 2.0). Costs arise when using
+  Hugging Face Inference Providers to power agents with cloud-hosted LLMs.
+  Hugging Face accounts include monthly inference credits that apply to
+  Inference Provider requests routed through Hugging Face. Users who bring
+  their own provider API keys (OpenAI, Anthropic, etc.) are billed directly
+  by those providers with no Hugging Face charge.
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+plans:
+  - name: Free (Open Source Library)
+    description: >
+      smolagents library is free to install and use under the Apache 2.0 license.
+      A free Hugging Face account is required to access Hugging Face Hub models
+      and Inference Providers. Free accounts receive $0.10 in monthly inference
+      credits for experimentation.
+    type: free
+    url: https://huggingface.co/pricing
+    quotas:
+      - name: Monthly Inference Credits
+        description: Included credits toward Hugging Face-routed Inference Provider requests.
+        type: metered
+        limit: 0.10
+        unit: USD
+        timeFrame: monthly
+      - name: Hub API Rate Limit
+        description: Hub API requests per 5-minute window for free authenticated users.
+        type: quota
+        limit: 1000
+        unit: requests
+        timeFrame: per-5-minutes
+      - name: Resolver Rate Limit
+        description: File download (resolver) requests per 5-minute window.
+        type: quota
+        limit: 5000
+        unit: requests
+        timeFrame: per-5-minutes
+      - name: Pages Rate Limit
+        description: Web page requests per 5-minute window.
+        type: quota
+        limit: 200
+        unit: requests
+        timeFrame: per-5-minutes
+  - name: PRO
+    description: >
+      Hugging Face PRO account at $9/month provides 20x more inference credits,
+      higher Hub API and resolver rate limits, ZeroGPU access, private dataset
+      viewer, Spaces Dev Mode, and a PRO badge.
+    type: paid
+    url: https://huggingface.co/pricing
+    price:
+      amount: 9.00
+      currency: USD
+      interval: monthly
+    quotas:
+      - name: Monthly Inference Credits
+        description: Included credits toward Hugging Face-routed Inference Provider requests.
+        type: metered
+        limit: 2.00
+        unit: USD
+        timeFrame: monthly
+      - name: Hub API Rate Limit
+        description: Hub API requests per 5-minute window.
+        type: quota
+        limit: 2500
+        unit: requests
+        timeFrame: per-5-minutes
+      - name: Resolver Rate Limit
+        description: File download requests per 5-minute window.
+        type: quota
+        limit: 12000
+        unit: requests
+        timeFrame: per-5-minutes
+      - name: Pages Rate Limit
+        description: Web page requests per 5-minute window.
+        type: quota
+        limit: 400
+        unit: requests
+        timeFrame: per-5-minutes
+      - name: ZeroGPU Quota
+        description: 8x ZeroGPU quota with highest queue priority.
+        type: boolean
+        value: true
+  - name: Team
+    description: >
+      Hugging Face Team plan at $20/user/month adds SSO (SAML & OIDC), Storage
+      Regions, Audit Logs, Resource Groups, centralized token control, and
+      $2.00 per-seat monthly inference credits pooled for the organization.
+    type: paid
+    url: https://huggingface.co/pricing
+    price:
+      amount: 20.00
+      currency: USD
+      interval: monthly
+      unit: per-user
+    quotas:
+      - name: Monthly Inference Credits Per Seat
+        description: Inference credits per user seat, pooled across the organization.
+        type: metered
+        limit: 2.00
+        unit: USD
+        timeFrame: monthly
+      - name: Hub API Rate Limit
+        description: Hub API requests per 5-minute window per member.
+        type: quota
+        limit: 3000
+        unit: requests
+        timeFrame: per-5-minutes
+      - name: Resolver Rate Limit
+        description: File download requests per 5-minute window per member.
+        type: quota
+        limit: 20000
+        unit: requests
+        timeFrame: per-5-minutes
+      - name: Pages Rate Limit
+        description: Web page requests per 5-minute window per member.
+        type: quota
+        limit: 400
+        unit: requests
+        timeFrame: per-5-minutes
+  - name: Enterprise
+    description: >
+      Hugging Face Enterprise at $50/user/month provides highest storage,
+      bandwidth, and API rate limits, SCIM provisioning, advanced security,
+      managed billing, legal and compliance support, and dedicated support.
+    type: enterprise
+    url: https://huggingface.co/pricing
+    price:
+      amount: 50.00
+      currency: USD
+      interval: monthly
+      unit: per-user
+    quotas:
+      - name: Monthly Inference Credits Per Seat
+        description: Inference credits per user seat, pooled across the organization.
+        type: metered
+        limit: 2.00
+        unit: USD
+        timeFrame: monthly
+      - name: Hub API Rate Limit
+        description: Hub API requests per 5-minute window per member.
+        type: quota
+        limit: 6000
+        unit: requests
+        timeFrame: per-5-minutes
+      - name: Resolver Rate Limit
+        description: File download requests per 5-minute window per member.
+        type: quota
+        limit: 50000
+        unit: requests
+        timeFrame: per-5-minutes
+      - name: Pages Rate Limit
+        description: Web page requests per 5-minute window per member.
+        type: quota
+        limit: 600
+        unit: requests
+        timeFrame: per-5-minutes
+      - name: Spending Controls
+        description: Administrators can set spending limits and disable specific Inference Providers.
+        type: boolean
+        value: true
+  - name: Pay-as-you-Go Inference
+    description: >
+      After exhausting monthly credits, all account tiers can purchase additional
+      inference credits. Hugging Face passes through provider costs at no markup.
+      Costs are compute-time based (e.g., a 10-second GPU request at $0.00012/sec
+      = $0.0012 per request).
+    type: freemium
+    url: https://huggingface.co/docs/api-inference/en/pricing
+    quotas:
+      - name: HF-Inference Compute Billing
+        description: >
+          Billed per inference request based on compute time multiplied by
+          hardware price (e.g., GPU at $0.00012/second).
+        type: metered
+        unit: USD-per-compute-second

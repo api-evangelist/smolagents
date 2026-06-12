@@ -1,0 +1,111 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+provider: smolagents
+providerId: smolagents
+name: smolagents FinOps
+description: >
+  smolagents is a free open-source library; FinOps considerations apply to
+  the Hugging Face Inference Provider costs incurred when running agents
+  against cloud-hosted LLMs. Hugging Face uses a transparent pass-through
+  billing model with no markup over provider rates. Costs are metered per
+  inference request based on compute time and hardware cost. All tiers
+  receive monthly included credits; pay-as-you-go credits can be purchased
+  after credits are exhausted.
+created: '2026-06-12'
+modified: '2026-06-12'
+billingModel:
+  type: metered
+  description: >
+    Pay-per-inference-request based on compute time multiplied by hardware
+    price. Hugging Face passes through provider costs at no markup. Monthly
+    free credits ($0.10 free / $2.00 PRO+Team+Enterprise per seat) offset
+    initial usage. Beyond credits, users purchase additional credit bundles.
+  granularity: per-request
+  currency: USD
+  invoicingCadence: monthly
+  freeCredits:
+    freeUser: 0.10
+    proUser: 2.00
+    teamPerSeat: 2.00
+    enterprisePerSeat: 2.00
+  computeExample:
+    description: 10-second GPU request at $0.00012/second = $0.0012 per request
+    hardwareCostPerSecond: 0.00012
+    exampleDurationSeconds: 10
+    exampleCost: 0.0012
+focusColumns:
+  - ChargeCategory: Usage
+  - ChargeClass: Regular
+  - ServiceName: Hugging Face Inference Providers
+  - ServiceCategory: AI and Machine Learning
+  - ChargeDescription: LLM inference compute time
+  - Region: Provider-dependent (Cerebras, Together AI, SambaNova, etc.)
+  - PricingUnit: compute-second
+  - ListUnitPrice: variable-by-provider-and-hardware
+  - BilledCurrency: USD
+  - ResourceType: GPU/CPU inference hardware
+  - SkuId: model-id + provider combination
+meters:
+  - name: Inference Compute
+    description: >
+      Metered cost per inference request computed as hardware-cost-per-second
+      multiplied by request duration in seconds. Reported per model and
+      provider in the Hugging Face Inference Providers usage dashboard.
+    unit: compute-second
+    billingDimension: duration × hardware-price
+    monitoringUrl: https://huggingface.co/settings/inference-providers/overview
+  - name: Hub Storage
+    description: >
+      Optional storage costs for models, datasets, and Spaces hosted on the
+      Hugging Face Hub. Public repos: $8-12/TB/month; private repos:
+      $12-18/TB/month with volume discounts.
+    unit: TB/month
+    tiers:
+      - range: any
+        publicPrice: 8.00
+        privatePrice: 12.00
+        currency: USD
+        note: Volume discounts up to 33% at 500TB+
+principles:
+  - name: Visibility
+    description: >
+      Track inference spend per model and provider via the Hugging Face
+      Inference Providers usage dashboard. Organizations on Team and Enterprise
+      plans can view spend broken down by user and set spending limits from
+      the organization billing page. Monthly credit usage is visible on the
+      personal billing page at huggingface.co/settings/billing.
+    actions:
+      - Monitor usage at https://huggingface.co/settings/inference-providers/overview
+      - Set organization spending limits in Team/Enterprise billing settings
+      - Use X-HF-Bill-To header to centralize org billing across members
+      - Review per-model, per-provider cost breakdown monthly
+  - name: Optimization
+    description: >
+      Reduce inference costs by using smaller quantized models, running local
+      inference with Transformers or Ollama (zero cloud cost), batching agent
+      tasks to minimize LLM round-trips, using cached results where possible,
+      and choosing cost-effective providers for non-latency-sensitive workloads.
+    actions:
+      - Prefer local TransformersModel or MLXModel for dev/test to avoid cloud charges
+      - Use smaller quantized models (e.g., 4-bit) for tasks where quality trade-off is acceptable
+      - Limit agent max_steps to control maximum number of LLM calls per run
+      - Choose providers by cost using HF Inference Providers pricing comparison
+      - Bring custom provider API keys to bypass HF routing where better provider pricing applies
+      - Set HF_TOKEN to use authenticated (higher free limit) tier and defer credit usage
+  - name: Accountability
+    description: >
+      Assign costs to teams by using organization billing (X-HF-Bill-To header).
+      Enterprise administrators can disable specific Inference Providers and
+      set per-organization spending caps to enforce budget controls.
+    actions:
+      - Use bill_to parameter in InferenceClient to route charges to specific orgs
+      - Enable administrator spending limits in Enterprise organization settings
+      - Disable high-cost Inference Providers not needed by the team
+      - Use SCIM provisioning (Enterprise) to manage user access and prevent unauthorized spend
+references:
+  - url: https://huggingface.co/docs/api-inference/en/pricing
+    description: Hugging Face Inference Providers pricing documentation
+  - url: https://huggingface.co/pricing
+    description: Hugging Face account plan pricing
+  - url: https://huggingface.co/settings/billing
+    description: Personal billing and usage dashboard
