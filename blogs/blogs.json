@@ -8,7 +8,39 @@
       "title": "Introducing smolagents: simple agents that write actions in code",
       "url": "https://huggingface.co/blog/smolagents",
       "published": "2024-12-31",
-      "tags": ["smolagents", "agents", "python", "code-agents", "hugging-face"]
+      "tags": [
+        "smolagents",
+        "agents",
+        "python",
+        "code-agents",
+        "hugging-face"
+      ]
     }
-  ]
+  ],
+  "repo": "smolagents",
+  "feeds": [
+    {
+      "source": "https://github.com/huggingface/smolagents",
+      "feed_url": "https://github.com/huggingface/smolagents",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/api-evangelist/smolagents/refs/heads/main/finops/smolagents-finops.yml",
+      "feed_url": "https://raw.githubusercontent.com/api-evangelist/smolagents/refs/heads/main/finops/smolagents-finops.yml",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://huggingface.co/blog/feed.xml",
+      "feed_url": "https://huggingface.co/blog/feed.xml",
+      "title": "",
+      "saved": 6,
+      "method": "feed"
+    }
+  ],
+  "post_count": 6,
+  "fetched": "2026-06-14T20:42:17Z"
 }
