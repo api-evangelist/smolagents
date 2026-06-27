@@ -63,7 +63,7 @@ common:
     url: https://github.com/huggingface/smolagents
   - type: Blog
     url: https://huggingface.co/blog/smolagents
-  - type: Changelog
+  - type: ChangeLog
     url: https://github.com/huggingface/smolagents/releases
   - type: PyPI
     url: https://pypi.org/project/smolagents/
@@ -83,7 +83,7 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/smolagents/refs/heads/main/finops/smolagents-finops.yml
   - type: BlogRSS
     url: https://huggingface.co/blog/feed.xml
-  - type: Blogs
+  - type: Blog
     url: https://raw.githubusercontent.com/api-evangelist/smolagents/refs/heads/main/blogs/blogs.json
   - type: JSONLDContext
     url: https://raw.githubusercontent.com/api-evangelist/smolagents/refs/heads/main/json-ld/smolagents-context.jsonld

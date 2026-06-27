@@ -20,6 +20,13 @@
   "repo": "smolagents",
   "feeds": [
     {
+      "source": "https://huggingface.co/blog/feed.xml",
+      "feed_url": "https://huggingface.co/blog/feed.xml",
+      "title": "",
+      "saved": 9,
+      "method": "feed"
+    },
+    {
       "source": "https://github.com/huggingface/smolagents",
       "feed_url": "https://github.com/huggingface/smolagents",
       "title": "",
@@ -32,15 +39,8 @@
       "title": "",
       "saved": 0,
       "method": "none"
-    },
-    {
-      "source": "https://huggingface.co/blog/feed.xml",
-      "feed_url": "https://huggingface.co/blog/feed.xml",
-      "title": "",
-      "saved": 6,
-      "method": "feed"
     }
   ],
-  "post_count": 6,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 24,
+  "fetched": "2026-06-27T12:03:07Z"
 }
