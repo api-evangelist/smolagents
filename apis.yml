@@ -53,6 +53,10 @@ apis:
       - type: GitHubRepository
         url: https://github.com/huggingface/smolagents
 common:
+  - type: VulnerabilityDisclosure
+    url: security/smolagents-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/smolagents-domain-security.yml
   - type: Website
     url: https://huggingface.co/smolagents
   - type: Documentation
