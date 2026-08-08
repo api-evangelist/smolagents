@@ -23,15 +23,12 @@
       "source": "https://huggingface.co/blog/feed.xml",
       "feed_url": "https://huggingface.co/blog/feed.xml",
       "title": "",
-      "saved": 0,
+      "saved": 1,
       "method": "feed"
     },
     {
       "source": "https://github.com/huggingface/smolagents",
-      "feed_url": "https://github.com/huggingface/smolagents",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "error": "TimeoutError"
     },
     {
       "source": "https://raw.githubusercontent.com/api-evangelist/smolagents/refs/heads/main/finops/smolagents-finops.yml",
@@ -41,6 +38,6 @@
       "method": "none"
     }
   ],
-  "post_count": 73,
-  "fetched": "2026-08-01T15:49:00Z"
+  "post_count": 75,
+  "fetched": "2026-08-06T14:08:46Z"
 }
