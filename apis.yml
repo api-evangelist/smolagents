@@ -65,6 +65,9 @@ apis:
       - type: GitHubRepository
         url: https://github.com/huggingface/smolagents
 common:
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/huggingface/smolagents/blob/main/LICENSE
   - type: VulnerabilityDisclosure
     url: security/smolagents-vulnerability-disclosure.yml
   - type: DomainSecurity
