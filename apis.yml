@@ -44,8 +44,8 @@ tags:
   - Code Generation
   - LLM
   - Hugging Face
-  - Open-Source
-  - Machine-Learning
+  - Open Source
+  - Machine Learning
 tags_raw:
   - AI Agents
   - Multi-Agent
@@ -55,6 +55,8 @@ tags_raw:
   - Hugging Face
   - Open Source
   - Machine Learning
+  - Open-Source
+  - Machine-Learning
 url: https://raw.githubusercontent.com/api-evangelist/smolagents/refs/heads/main/apis.yml
 created: '2026-06-12'
 modified: '2026-06-12'
@@ -68,7 +70,6 @@ apis:
       orchestrate multi-agent systems. Integrates with Hugging Face Hub Inference Providers,
       LiteLLM, Transformers, Azure OpenAI, Amazon Bedrock, and local models via Ollama.
     humanURL: https://huggingface.co/docs/smolagents/en/index
-    baseURL: https://huggingface.co
     tags:
       - Agents
       - Python
