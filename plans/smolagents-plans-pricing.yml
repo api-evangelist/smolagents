@@ -185,3 +185,40 @@ plans:
           hardware price (e.g., GPU at $0.00012/second).
         type: metered
         unit: USD-per-compute-second
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  units: []
+  plans:
+  - name: Free (Open Source Library)
+    access: free
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: PRO
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Team
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: enterprise
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Pay-as-you-Go Inference
+    access: freemium
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
